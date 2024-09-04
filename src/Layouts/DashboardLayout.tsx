@@ -25,7 +25,7 @@ const DashboardLayout: React.FC = () => {
 
    {/* Sidebar for menu items */}
    <aside
-    className={`fixed inset-0 top-[30px] left-0 lg:relative lg:flex lg:flex-col lg:w-[180px] bg-white text-cerulean-blue-600 font-bold p-4 lg:p-6 transform transition-transform ease-in-out duration-300
+    className={`fixed inset-0 top-[50px] left-0 lg:relative lg:flex lg:flex-col lg:w-[180px] z-[2000] bg-white text-cerulean-blue-600 font-bold p-4 lg:p-6 transform transition-transform ease-in-out duration-300
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         lg:translate-x-0`}
    >

@@ -65,7 +65,7 @@ const Login = () => {
             validationMessage={validationMessage}
           />
 
-          <div><Button variant="filled" onClick={() => alert('Create account')} children='Log In' /></div>
+          <div><Button variant="filled" onClick={() => navigate('/dashboard')} children='Log In' /></div>
         </div>
       </form>
     </div>

@@ -4,6 +4,7 @@ import DashboardLayout from './Layouts/DashboardLayout'
 import SignUp from './Components/SignUp'
 import Login from './Components/Login'
 import Tasks from './Pages/Tasks'
+import SingleTask from './Pages/SingleTask'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         </Route>
         <Route path='/dashboard' element={<DashboardLayout />}>
           <Route index element={<Tasks />} />
+          <Route path='/dashboard/task/:title' element={<SingleTask />} />
         </Route>
       </>
     )

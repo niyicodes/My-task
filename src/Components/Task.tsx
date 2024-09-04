@@ -20,7 +20,7 @@ const Task: React.FC<TaskProps> = ({ index, status, title, onViewTask }) => {
  };
 
  return (
-  <article className="flex flex-col w-full sm:w-[270px] xl:w-[300px] h-[220px] justify-between border-b bg-white shadow-md rounded-2xl p-[20px] flex-grow">
+  <article className="flex flex-col w-full sm:w-[200px] xl:w-[250px] h-[220px] justify-between border-b bg-white shadow-md rounded-2xl p-[20px] ">
    <div className="flex justify-between space-x-4">
     {/* Index */}
     <h3 className="font-semibold text-lg">{formattedIndex}</h3>
@@ -28,7 +28,7 @@ const Task: React.FC<TaskProps> = ({ index, status, title, onViewTask }) => {
     <p className={`px-2 py-1 rounded-full ${statusColors[status]}`}>{status.replace('-', ' ')}</p>
    </div>
    {/* Title */}
-   <p className=" text-[#16171D] font-bold text-[20px]">{title}</p>
+   <p className=" text-[#16171D] font-bold text-[16px]">{title}</p>
    {/* View Task Button */}
    <button onClick={onViewTask} className="flex items-center text-cerulean-blue-600 transition-colors">
     <p className="mr-2 font-bold text-[20px]">View Task</p>

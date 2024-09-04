@@ -46,8 +46,8 @@ const SignUp = () => {
    <form className="w-full lg:max-w-[450px] mt-[50px]">
     {/* form header */}
     <div>
-     <h2>Create an Account</h2>
-     <small>It's simple and Easy!!</small>
+     <h2 className="text-[25px] font-extrabold">Create an Account</h2>
+     <small className="text-[15px]">It's simple and Easy!!</small>
     </div>
     {/* form area */}
     <div className="flex flex-col gap-6 mt-[30px]">

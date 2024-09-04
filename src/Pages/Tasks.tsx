@@ -3,8 +3,10 @@ import { useState } from 'react'
 import EmptyTasks from "../Components/EmptyTasks"
 import Task from "../Components/Task";
 import CreateTask from "../Components/Modals/CreateTask";
+import { useNavigate } from "react-router-dom";
 
 const Tasks = () => {
+  const navigate = useNavigate()
   const [tasks, setTasks] = useState<any[]>(
     [
       { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
@@ -94,7 +96,7 @@ const Tasks = () => {
                           index={index + 1}
                           status={task.status}
                           title={task.title}
-                          onViewTask={() => alert(index)}
+                          onViewTask={() => navigate(`/dashboard/task/${task.title}`)}
                         />
                       ))}
                     </div>
