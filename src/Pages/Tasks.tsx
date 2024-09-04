@@ -1,23 +1,33 @@
 import Button from "../Components/Button"
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import EmptyTasks from "../Components/EmptyTasks"
 import Task from "../Components/Task";
 import CreateTask from "../Components/Modals/CreateTask";
 import { useNavigate } from "react-router-dom";
+import Loading from "../Components/Loading";
 
 const Tasks = () => {
   const navigate = useNavigate()
-  const [tasks, setTasks] = useState<any[]>(
-    [
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'in-progress' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'in-progress' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'completed' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
-      { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'completed' },
-    ]
-  );
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [tasks, setTasks] = useState<any[]>([]);
+
+
+  useEffect(()=>{
+    setIsLoading(true)
+    setTimeout(()=>{
+      setTasks([
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'in-progress' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'in-progress' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'completed' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'pending' },
+        { id: '1', title: 'Create a Design System for Enum Workspace.', name: 'goat', status: 'completed' },
+      ])
+      setIsLoading(false)
+    },700)
+
+  },[])
   const [isCreatingTask, setIsCreatingTask] = useState<boolean>(false)
 
   const openModal = () => setIsCreatingTask(true);
@@ -37,10 +47,18 @@ const Tasks = () => {
   };
 
   const getTaskCount = (status: string) => {
-    return tasks.filter(task => status === 'all' || task.status === status).length;
+    return tasks?.filter(task => status === 'all' || task.status === status).length;
   };
 
-  const filteredTasks = tasks.filter(task => activeTab === 'all' || task.status === activeTab);
+  const filteredTasks = tasks?.filter(task => activeTab === 'all' || task.status === activeTab);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-[50vh]">
+        <Loading /> 
+      </div>
+    );
+  }
 
   return (
     <section>
@@ -50,12 +68,12 @@ const Tasks = () => {
           <h1 className="text-[35px] font-extrabold text-[#101C56]">Tasks</h1>
           <small className="text-[20px] text-[#636363]">Your created tasks</small>
         </article>
-        {tasks.length > 0 && <div><Button children='Create Task' variant="filled" onClick={openModal} /></div>}
+        {tasks?.length > 0 && <div><Button children='Create Task' variant="filled" onClick={openModal} /></div>}
       </div>
       {/* the created task area */}
       <div>
         {
-          tasks.length < 1 ?
+          tasks?.length < 1 ?
             (
               <div className="flex justify-center items-center h-[50vh]">
                 <EmptyTasks createTask={openModal} />
@@ -82,7 +100,7 @@ const Tasks = () => {
 
                 {/* tasks area */}
                 <div className="gap-4 mt-4">
-                  {filteredTasks.length === 0 ? (
+                  {filteredTasks?.length === 0 ? (
                     <div className="flex justify-center items-center h-1/2 text-gray-600">
                       {activeTab === 'pending' && <p>No pending tasks at the moment.</p>}
                       {activeTab === 'in-progress' && <p>No tasks are currently in progress.</p>}
@@ -90,7 +108,7 @@ const Tasks = () => {
                     </div>
                   ) : (
                     <div className="flex flex-wrap gap-4">
-                      {filteredTasks.map((task, index) => (
+                      {filteredTasks?.map((task, index) => (
                         <Task
                           key={index}
                           index={index + 1}
