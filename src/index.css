@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+ padding: 0;
+ margin: 0;
+ box-sizing: border-box;
+ font-family: "Vollkorn", serif;
+}
+
+body,
+html {
+ font-family: "Vollkorn", serif;
+}
+
+.inputLabel {
+ @apply text-lg font-medium text-[#2C2E3A];
+}
+
+.customTextarea {
+ @apply w-full border-2 border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:border-cerulean-blue-500;
+}
+
+.customInput {
+ @apply w-full border-2 border-gray-300 rounded-lg p-2 pr-12 text-gray-700 focus:outline-none focus:border-cerulean-blue-500;
+}
+
+.showPassword{
+  @apply absolute inset-y-0 right-0 pr-3 flex items-center text-sm text-gray-600 focus:outline-none
+}
